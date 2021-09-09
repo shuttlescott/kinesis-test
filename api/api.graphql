@@ -1,0 +1,51 @@
+interface Node {
+    id: ID!
+}
+
+enum CardSuit {
+    CLUBS
+    DIAMONDS
+    HEARTS
+    SPADES
+}
+
+scalar Time
+
+type Card implements Node {
+    id: ID!
+    createdAt: Time
+    suit: CardSuit!
+    value: Int!
+}
+
+type Player implements Node {
+    id: ID!
+    createdAt: Time
+    age: Int!
+    name: String!
+    score: Int!
+    cards: [Card]
+}
+
+input PlayerInput {
+    age: Int!
+    name: String
+}
+
+input CardInput {
+    playerId: ID!
+    suit: CardSuit!
+    value: Int!
+}
+
+type Query {
+    node(id: ID!): Node
+    nodes(ids: [ID!]!): [Node]!
+    players(where: PlayerWhereInput): [Player]
+}
+
+type Mutation {
+    createPlayer(player: PlayerInput!): Player!
+    createCard(card: CardInput!): Card!
+    clearCards(player_id: ID!): Player!
+}

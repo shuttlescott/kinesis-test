@@ -23,7 +23,12 @@ func (Card) Mixin() []ent.Mixin {
 func (Card) Fields() []ent.Field {
 	return []ent.Field{
 		field.Enum("suit").
-			Values("Hearts", "Diamonds", "Clubs", "Spades"),
+			NamedValues(
+				"Hearts", "HEARTS",
+				"Diamonds", "DIAMONDS",
+				"Clubs", "CLUBS",
+				"Spades", "SPADES",
+			),
 		field.Int("value").
 			Min(1).
 			Max(13),

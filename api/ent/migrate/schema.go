@@ -13,7 +13,7 @@ var (
 		{Name: "id", Type: field.TypeInt, Increment: true},
 		{Name: "create_time", Type: field.TypeTime},
 		{Name: "update_time", Type: field.TypeTime},
-		{Name: "suit", Type: field.TypeEnum, Enums: []string{"Hearts", "Diamonds", "Clubs", "Spades"}},
+		{Name: "suit", Type: field.TypeEnum, Enums: []string{"HEARTS", "DIAMONDS", "CLUBS", "SPADES"}},
 		{Name: "value", Type: field.TypeInt},
 		{Name: "player_cards", Type: field.TypeInt, Nullable: true},
 	}

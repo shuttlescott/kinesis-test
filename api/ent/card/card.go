@@ -4,6 +4,8 @@ package card
 
 import (
 	"fmt"
+	"io"
+	"strconv"
 	"time"
 )
 
@@ -79,10 +81,10 @@ type Suit string
 
 // Suit values.
 const (
-	SuitHearts   Suit = "Hearts"
-	SuitDiamonds Suit = "Diamonds"
-	SuitClubs    Suit = "Clubs"
-	SuitSpades   Suit = "Spades"
+	SuitHearts   Suit = "HEARTS"
+	SuitDiamonds Suit = "DIAMONDS"
+	SuitClubs    Suit = "CLUBS"
+	SuitSpades   Suit = "SPADES"
 )
 
 func (s Suit) String() string {
@@ -97,4 +99,22 @@ func SuitValidator(s Suit) error {
 	default:
 		return fmt.Errorf("card: invalid enum value for suit field: %q", s)
 	}
+}
+
+// MarshalGQL implements graphql.Marshaler interface.
+func (s Suit) MarshalGQL(w io.Writer) {
+	io.WriteString(w, strconv.Quote(s.String()))
+}
+
+// UnmarshalGQL implements graphql.Unmarshaler interface.
+func (s *Suit) UnmarshalGQL(val interface{}) error {
+	str, ok := val.(string)
+	if !ok {
+		return fmt.Errorf("enum %T must be a string", val)
+	}
+	*s = Suit(str)
+	if err := SuitValidator(*s); err != nil {
+		return fmt.Errorf("%s is not a valid Suit", str)
+	}
+	return nil
 }

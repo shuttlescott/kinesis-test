@@ -26,6 +26,8 @@ type Client struct {
 	Card *CardClient
 	// Player is the client for interacting with the Player builders.
 	Player *PlayerClient
+	// additional fields for node api
+	tables tables
 }
 
 // NewClient creates a new client configured with the given options.
