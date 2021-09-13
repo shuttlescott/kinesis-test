@@ -1,24 +1,20 @@
-# README
+# Rails API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API built with Ruby on Rails.
 
-Things you may want to cover:
+## Technologies Used
 
-* Ruby version
+- [active record](https://guides.rubyonrails.org/active_record_basics.html)
+- [graphql](https://github.com/rmosolgo/graphql-ruby)
 
-* System dependencies
+## Installation
 
-* Configuration
+<Fill this in when known>
 
-* Database creation
+## Running Tests
 
-* Database initialization
+<Fill this in when known>
 
-* How to run the test suite
+## Deployment
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<Fill this in when known>
